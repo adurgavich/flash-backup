@@ -1,0 +1,265 @@
+
+
+
+<html>
+<head>
+
+<title>RJFlash - Stormy Sky (Rain and Lightning Effect)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+ 
+
+</head>
+<body bgcolor="#D9D9D9" style="margin:0px;" topmargin="0" bottommargin="0" rightmargin="0" leftmargin="0">
+
+
+
+<table border="0" cellpadding="8" cellspacing="0" width="100%" height="100%" style="background-color:#D9D9D9; border:solid 6px #000000; margin:0px;">
+<tr><td align="center" valign="middle" nowrap>
+
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" align="center" style="background-color:#FFFFFF; border:solid 2px #000000; margin:0px;">
+<tr><td align="center" valign="middle" >
+<p align="center" style="font-family:verdana,arial; font-size:12px; color:#000000; margin:12px;"> 
+Thanks for choosing RJFlash Design.<br><br>
+</p>
+<hr width="100%" size="1" color="#000000"> 
+
+
+<table cellpadding="0" cellspacing="0" align="center" style="border:solid 0px #000000"><tr><td align="center" nowrap>
+<p align="center" style="font-family:verdana,arial; font-size:14px; color:#000099;"> 
+<br> &nbsp; Basic <b>Rain and Lightning</b> effect 
+<br><br>
+<u>FOR: FLASH 8 (AS 2.0)</u>
+ </p>
+
+<br> 
+</td></tr>
+<tr><td align="center" >
+
+
+<p align="center" style="font-family:verdana,arial; font-size:12px; color:#000000;"> 
+To use the Rain or Lightning:<br>Copy and paste <b>Rain</b> clip and/or <b>Lightning</b> clip into your project.<br>
+( <small> Adjustable settings are inside the Rain and Lightning clips </small> )</p>
+
+
+<br> 
+</td></tr>
+<tr><td align="center" >
+
+<hr width="100%" size="1" color="#000000"> <br>
+<table cellpadding="12" cellspacing="12" align="center" style="border:solid 0px #000000">
+<tr><td align="center" >
+<p align="left" style="font-family:verdana,arial; font-size:11px; color:#000066;"> 
+Create 600x400 movie at around 60 FPS.
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<font style="font-size:14px;" color="#1253DE"><b>RAIN FALL:</b></font>
+<br>
+<br> 
+1. Draw or find a graphic of a rain drop (with transparency support such as .png format).
+<br>
+<br>
+
+2. Create <b>raindrops</b> movie clip in library: <br>
+&nbsp; &nbsp; - Place <b>raindrops</b> in upper-left corner on frame1 main stage.
+<br>
+<br>
+
+3. Create <b>raindrop_graphic</b> movie clip in library: <br>
+&nbsp; &nbsp; - Place <b>raindrop.png</b> image inside <b>raindrop_graphic</b> (align: Y-bottom, X-center).<br>
+&nbsp; &nbsp; - Place <b>raindrop_graphic</b> inside <b>raindrops</b>.<br>
+&nbsp; &nbsp; - Set the <b>raindrop_graphic</b> instance name to "<b>raindrop0</b>".
+<br>
+<br>
+
+4. Inside <b>raindrops</b>, place this "generator" code in frame1 actions:
+<br><br>
+<font color="#669933"><i>
+rainDrop_amount=32;<br>
+<br>
+for(n=0; n <= rainDrop_amount; n++){<br>
+duplicateMovieClip(raindrop0, "raindrop0"+n, n);<br>
+};</i></font>  
+<br>
+<br>
+<br>
+
+5. Inside <b>raindrop_graphic</b>, place this basic "rain" code in frame1 actions:
+<br><br>
+<font color="#669933"><i>
+fall_speed=72;<br>
+span_left=0;<br>
+span_right=600;<br>
+restartY=450;<br>
+<br>
+ini_Y_coord=-50+(Math.random()*450);<br>
+_y=ini_Y_coord;<br>
+ini_X_coord=span_left+Math.random()*span_right; <br>
+_x=ini_X_coord;<br>
+function preSPAWN(){<br>
+sizeMIN=4;<br>
+sizeMAX=48-sizeMIN;<br>
+rand_scale = sizeMIN+ ( Math.random()*(Math.random()*sizeMAX) );<br>
+_width=rand_scale; <br>
+_height=(_width*2.3);<br>
+rand_Y_spd= (fall_speed + (Math.random()*fall_speed))/10;<br>
+rand_Y_end= restartY+Math.random()*16;<br>
+};<br>
+preSPAWN();<br>
+<br>
+function reSPAWN(){<br>
+preSPAWN(); <br>
+rand_Y_coord=-(Math.random()*50); <br>
+_y=rand_Y_coord;<br>
+rand_X_coord=span_left+Math.random()*span_right; <br>
+_x=rand_X_coord;<br>
+};<br>
+<br>
+function aLIVE(){<br>
+_y+=(rand_Y_spd)*(0.5+rand_scale/6);<br>
+}; <br>
+<br>
+function control_FUNCTIONS(){<br>
+if(_y>=rand_Y_end){<br>
+reSPAWN();<br>
+}else{<br>
+aLIVE();<br>
+};<br>
+};<br>
+onEnterFrame=control_FUNCTIONS;<br>
+</i></font> 
+
+<br>
+<br>
+6. Run movie(CTRL+Enter) to test rain effect.
+<br>... and adjust (tweak properties/settings) as necessary.
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<font style="font-size:14px;" color="#7922FF"><b>LIGHTNING:</b></font>
+<br>
+<br> 
+1. Draw or find a graphic of a lightning bolt (with transparency support such as .png format).
+<br>
+<br>
+
+2. Create <b>lightning</b> movie clip in library: <br>
+&nbsp; &nbsp; - Place <b>lightning</b> in upper-left corner on frame1 main stage.<br>
+&nbsp; &nbsp; - Place <b>lightning.png</b> image inside <b>lightning</b> (align: Y-bottom, X-center).
+<br>
+<br>
+
+3. Inside <b>lightning</b>, place this basic "lightning" code in frame1 actions:
+<br><br>
+<font color="#669933"><i>
+
+chance=75;<br>
+
+span_left=0;<br>
+span_right=580;<br>
+
+size_min=64;<br>
+size_max=820;<br>
+<br>
+function spawn(){<br>
+rand_N=-1+Math.random()*2;<br>
+if(rand_N<0){<br>
+_xscale=-(size_min+Math.random()*size_max);<br>
+_yscale=-(_xscale)+(Math.random()*size_min);<br>
+}else if(rand_N>0){<br>
+_xscale=size_min+(Math.random()*size_max);<br>
+_yscale=_xscale+(Math.random()*size_min);<br>
+};<br>
+randALPHA_fade=2.5+(Math.random()*8);<br>
+_x=span_left+Math.random()*span_right;<br>
+_y=-60+Math.random()*20;<br>
+_rotation=-8+(Math.random()*16);<br>
+randLIGHTglow=50+(Math.random()*130);<br>
+_alpha=randLIGHTglow/1.2;<br>
+};<br>
+<br>
+function active(){<br>
+_alpha -= randALPHA_fade/1.2;<br>
+};<br>
+<br>
+onEnterFrame=function(){<br>
+_chanceA=Math.random()*Math.random()*chance;<br>
+_chanceB=Math.random()*2000;<br>
+if( _chanceA >= _chanceB ){<br>
+spawn();<br>
+}else{<br>
+active();<br>
+};<br>
+};<br>
+
+
+</i></font>
+
+
+
+
+<br>
+<br> 
+
+4. Run movie(CTRL+Enter) to test lightning effect.<br> 
+... and adjust (tweak properties/settings) as necessary.<br> 
+</p>
+
+</td></tr></table>
+
+</td></tr></table>
+<hr width="100%" size="1" color="#000000"> 
+
+<p align="center" style="font-family:verdana,arial; font-size:12px; color:#000000;"> 
+Files in ZIP:</p>
+<table align="center"><tr><td align="left">
+<p align="left" style="font-family:verdana,arial; font-size:12px; color:#000000;"> 
+ * .fla<br>
+ * .swf<br>
+ * help_.html<br>
+<br>  </p>
+</td></tr></table>
+
+<hr width="100%" size="1" color="#000000"> 
+<br>
+
+
+<p align="center" style="font-family:verdana,arial; font-size:12px; color:#000000; margin:10px;"> 
+please email me if you have any troubles: 
+<br>
+
+<br>
+<a href="mailto:talk2rj@rjflash.com">talk2rj@rjflash.com</a>
+<br>
+
+
+</p>
+
+<br>
+
+</td></tr></table>
+
+
+
+</td></tr>
+
+<tr><td align="center" valign="bottom"><p align="center" style="font-family:verdana; color:#333333; font-size:11px; margin:4px;">
+<a href="http://www.rjflash.com" target="_rjf">www.rjflash.com</a> &nbsp; &copy;2003-2008 <small>( All rights reserved )</small><br></p>
+
+
+</td></tr></table></body></html>
+
+
+
+
